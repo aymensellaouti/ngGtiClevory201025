@@ -60,6 +60,7 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
+import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
     UserListComponent,
     ProductsComponent,
     WeekTodoComponent,
+    MasterDetailsComponent,
   ],
   imports: [
     BrowserModule,

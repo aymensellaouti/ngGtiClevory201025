@@ -12,30 +12,36 @@ import { AddCvComponent } from "./cv/add-cv/add-cv.component";
 import { CvComponent } from "./cv/cv/cv.component";
 import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { RhComponent } from "./optimizationPattern/rh/rh.component";
+import { MasterDetailsComponent } from "./cv/master-details/master-details.component";
 
 const routes: Route[] = [
-  { path: "login", component: LoginComponent },
-  { path: "rh", component: RhComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'rh', component: RhComponent },
   {
-    path: "cv",
-    component: CvComponent,
-  },
-  { path: "cv/add", component: AddCvComponent, canActivate: [AuthGuard] },
-  { path: "cv/:id", component: DetailsCvComponent },
-  {
-    path: "",
-    component: FrontComponent,
+    //cv/list
+    path: 'cv',
     children: [
-      { path: "todo", component: TodoComponent },
-      { path: "word", component: MiniWordComponent },
+      //list
+      { path: '', component: CvComponent },
+      { path: 'add', component: AddCvComponent, canActivate: [AuthGuard] },
+      { path: 'list', component: MasterDetailsComponent },
+      { path: ':id', component: DetailsCvComponent },
     ],
   },
   {
-    path: "admin",
-    component: AdminComponent,
-    children: [{ path: "color", component: ColorComponent }],
+    path: '',
+    component: FrontComponent,
+    children: [
+      { path: 'todo', component: TodoComponent },
+      { path: 'word', component: MiniWordComponent },
+    ],
   },
-  { path: "**", component: NF404Component },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [{ path: 'color', component: ColorComponent }],
+  },
+  { path: '**', component: NF404Component },
 ];
 
 @NgModule({
