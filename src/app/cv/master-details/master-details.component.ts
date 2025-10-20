@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-master-details',
@@ -9,12 +10,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./master-details.component.css'],
 })
 export class MasterDetailsComponent {
-  onClick(cv: Cv) {
-    //throw new Error('Method not implemented.');
-  }
   cvs: Cv[] = [];
   cvService = inject(CvService);
   toastr = inject(ToastrService);
+  router = inject(Router);
+  acr = inject(ActivatedRoute);
   constructor() {
     this.cvService.getCvs().subscribe({
       next: (cvs) => {
@@ -25,7 +25,13 @@ export class MasterDetailsComponent {
         this.toastr.error(`
           Attention!! Les données sont fictives, problème avec le serveur.
           Veuillez contacter l'admin.`);
-      },
-    });
+        },
+      });
+    }
+    onClick(cv: Cv) {
+      this.router.navigate([cv.id], {
+        relativeTo: this.acr
+      })
+      //throw new Error('Method not implemented.');
+    }
   }
-}

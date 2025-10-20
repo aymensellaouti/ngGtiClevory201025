@@ -24,7 +24,11 @@ const routes: Route[] = [
       //list
       { path: '', component: CvComponent },
       { path: 'add', component: AddCvComponent, canActivate: [AuthGuard] },
-      { path: 'list', component: MasterDetailsComponent },
+      {
+        path: 'list', component: MasterDetailsComponent,
+        children: [
+          { path: ':id', component: DetailsCvComponent },
+      ] },
       { path: ':id', component: DetailsCvComponent },
     ],
   },
