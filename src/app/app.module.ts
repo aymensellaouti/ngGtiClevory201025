@@ -49,6 +49,12 @@ import { ProductsComponent } from "./products/products.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { AutocompleteComponent } from "./cv/autocomplete/autocomplete.component";
 import { SliderComponent } from "./rxjs/slider/slider.component";
+import { CvService } from "./cv/services/cv.service";
+import { LoggerService } from "./services/logger.service";
+import { SayHelloService } from "./services/sayHello.service";
+import { Logger2Service } from "./services/logger2.service";
+import { LOGGER_TOKEN } from "./injection tokens/logger.injection-token";
+import { Logger3Service } from "./services/logger3.service";
 
 @NgModule({
   declarations: [
@@ -98,14 +104,32 @@ import { SliderComponent } from "./rxjs/slider/slider.component";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
+    ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: "registerWhenStable:30000",
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    {
+      provide: LOGGER_TOKEN,
+      useClass: Logger2Service,
+      multi: true,
+    },
+    {
+      provide: LOGGER_TOKEN,
+      useClass: LoggerService,
+      multi: true
+    },
+    {
+      provide: LOGGER_TOKEN,
+      useClass: Logger3Service,
+      multi: true
+    },
+
+    AuthInterceptorProvider,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

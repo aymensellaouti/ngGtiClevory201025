@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AbstractLoggerSerice } from '../injection tokens/abstract-logger.service';
 
-@Injectable({providedIn:'root'})
-export class LoggerService extends AbstractLoggerSerice {
+
+export class Logger3Service extends AbstractLoggerSerice {
   logger(something: any) {
-    console.log('From Logger Service :');
+    console.log('From Logger 3 Service :');
     console.log(something);
   }
 }
