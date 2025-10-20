@@ -59,6 +59,8 @@ import { CONSTANTES } from "src/config/const.config";
 import { FakeCvService } from "./cv/services/fake-cv.service";
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 
+import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
+import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,6 +139,10 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
       // la dépendance lei bech nwaferhalek welli esmha CvService
       useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService
 
+    },
+    {
+      provide: UUID_TOKEN,
+      useValue: uuidV4
     },
 
     AuthInterceptorProvider,
