@@ -60,7 +60,7 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
-import {v4 as uuidV4} from 'uuid';
+//import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,7 +142,8 @@ import {v4 as uuidV4} from 'uuid';
     },
     {
       provide: UUID_TOKEN,
-      useValue: uuidV4
+     // useValue: uuidV4
+     useValue: () => 'install '
     },
 
     AuthInterceptorProvider,
