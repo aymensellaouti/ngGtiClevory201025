@@ -61,6 +61,7 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
@@ -112,6 +113,7 @@ import { MasterDetailsComponent } from './cv/master-details/master-details.compo
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxUiLoaderModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -128,24 +130,23 @@ import { MasterDetailsComponent } from './cv/master-details/master-details.compo
     {
       provide: LOGGER_TOKEN,
       useClass: LoggerService,
-      multi: true
+      multi: true,
     },
     {
       provide: LOGGER_TOKEN,
       useClass: Logger3Service,
-      multi: true
+      multi: true,
     },
     {
       //Bech nwaferlek dependance esmha cvService
       provide: CvService,
       // la dépendance lei bech nwaferhalek welli esmha CvService
-      useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService
-
+      useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService,
     },
     {
       provide: UUID_TOKEN,
-     // useValue: uuidV4
-     useValue: () => 'install '
+      // useValue: uuidV4
+      useValue: () => 'install ',
     },
 
     AuthInterceptorProvider,
