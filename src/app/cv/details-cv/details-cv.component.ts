@@ -13,6 +13,7 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class DetailsCvComponent implements OnInit {
   cv: Cv | null = null;
+  cv$ = this.cvService.getCvById(this.activatedRoute.snapshot.params['id']);
   constructor(
     private cvService: CvService,
     private router: Router,
@@ -22,7 +23,6 @@ export class DetailsCvComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
      this.activatedRoute.params.subscribe({
       next: (params) => {
         const id = params['id'];
