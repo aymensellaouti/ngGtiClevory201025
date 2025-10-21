@@ -6,12 +6,22 @@ import { CvService } from "../services/cv.service";
 import { EMPTY, Observable, catchError, of } from "rxjs";
 import { TodoService } from "src/app/todo/service/todo.service";
 @Component({
-  selector: "app-cv",
-  templateUrl: "./cv.component.html",
-  styleUrls: ["./cv.component.css"],
+  selector: 'app-cv',
+  templateUrl: './cv.component.html',
+  styleUrls: ['./cv.component.css'],
 })
 export class CvComponent {
-  cvs: Cv[] = [];
+  //cvs: Cv[] = [];
+  cvs$ = this.cvService.getCvs().pipe(
+    catchError(
+      e => {
+         this.toastr.error(`
+          Attention!! Les données sont fictives, problème avec le serveur.
+          Veuillez contacter l'admin.`);
+          return of(this.cvService.getFakeCvs());
+      }
+    )
+  )
   selectedCv: Cv | null = null;
   /*   selectedCv: Cv | null = null; */
   date = new Date();
@@ -20,21 +30,21 @@ export class CvComponent {
     private logger: LoggerService,
     private toastr: ToastrService,
     private cvService: CvService,
-    private todoService: TodoService,
+    private todoService: TodoService
   ) {
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
-        this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      },
-    });
-    this.logger.logger("je suis le cvComponent");
-    this.toastr.info("Bienvenu dans notre CvTech");
+    // this.cvService.getCvs().subscribe({
+    //   next: (cvs) => {
+    //     this.cvs = cvs;
+    //   },
+    //   error: () => {
+    //     this.cvs = this.cvService.getFakeCvs();
+    //     this.toastr.error(`
+    //       Attention!! Les données sont fictives, problème avec le serveur.
+    //       Veuillez contacter l'admin.`);
+    //   },
+    // });
+    this.logger.logger('je suis le cvComponent');
+    this.toastr.info('Bienvenu dans notre CvTech');
   }
   onForwardCv(cv: Cv) {
     this.selectedCv = cv;
