@@ -15,18 +15,16 @@ export class CvComponent {
   cvs$ = this.cvService.getCvs().pipe(
     retry({
       delay: 2000,
-      count: 2
+      count: 2,
     }),
-    catchError(
-      e => {
-         this.toastr.error(`
+    catchError((e) => {
+      this.toastr.error(`
           Attention!! Les données sont fictives, problème avec le serveur.
           Veuillez contacter l'admin.`);
-          return of(this.cvService.getFakeCvs());
-      }
-    )
-  )
-  selectedCv: Cv | null = null;
+      return of(this.cvService.getFakeCvs());
+    })
+  );
+  selectedCv$ = this.cvService.selectedCv$;
   /*   selectedCv: Cv | null = null; */
   date = new Date();
 
@@ -50,7 +48,5 @@ export class CvComponent {
     this.logger.logger('je suis le cvComponent');
     this.toastr.info('Bienvenu dans notre CvTech');
   }
-  onForwardCv(cv: Cv) {
-    this.selectedCv = cv;
-  }
+
 }
