@@ -3,21 +3,36 @@ import { CredentialsDto } from '../dto/credentials.dto';
 import { LoginResponseDto } from '../dto/login-response.dto';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../../../config/api.config';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject, tap } from 'rxjs';
 import { CONSTANTES } from 'src/config/const.config';
+import { Cv } from 'src/app/cv/model/cv';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-
-  user$ // flux eli traja3 ya connectedUser kan connecté sinon null
-  isLoggedIn$!: Observable<boolean>;
-  isLoggedOut!: Observable<boolean>;
-  constructor(private http: HttpClient) {}
+  user$ = new BehaviorSubject<ConnectedUser | null>(null); // flux eli traja3 ya connectedUser kan connecté sinon null
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
+  isLoggedOut$: Observable<boolean> = this.user$.pipe(map((user) => !user));
+  constructor(private http: HttpClient) {
+    const user = localStorage.getItem(CONSTANTES.connectedUser);
+    if(user) {
+      this.user$.next(JSON.parse(user));
+    }
+  }
 
   login(credentials: CredentialsDto): Observable<LoginResponseDto> {
-    return this.http.post<LoginResponseDto>(API.login, credentials);
+    return this.http.post<LoginResponseDto>(API.login, credentials).pipe(
+      tap(response => {
+        const user: ConnectedUser = {
+          id: response.userId,
+          email: credentials.email
+        };
+        this.user$.next(user);
+        localStorage.setItem(CONSTANTES.connectedUser, JSON.stringify(user));
+        this.saveToken(response.id);
+      })
+    );
   }
 
   isAuthenticated(): boolean {
@@ -25,7 +40,9 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.user$.next(null);
+    localStorage.removeItem(CONSTANTES.connectedUser);
+    this.removeToken();
   }
   saveToken(token: string) {
     localStorage.setItem(CONSTANTES.token, token);

@@ -1,5 +1,6 @@
 export const CONSTANTES = {
-  defaultImage: "cv.png",
-  env: "prod",
-  token: "token"
+  defaultImage: 'cv.png',
+  env: 'prod',
+  token: 'token',
+  connectedUser: 'connectedUser',
 };
