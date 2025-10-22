@@ -39,16 +39,26 @@ export class AddCvComponent {
         0,
         {
           validators: [Validators.required],
+          updateOn: 'blur'
         },
       ],
     },
     {
       validators: [],
       asyncValidators: [],
+      updateOn: 'change'
     }
   );
 
-  addCv(cv: Cv) {
+  constructor() {
+    this.age.valueChanges.subscribe({
+      next: (age) => {
+        if (age >= 18) this.path?.enable();
+        else this.path?.disable()
+      }
+    })
+  }
+  addCv() {
     this.cvService.addCv(this.form.getRawValue()).subscribe({
       next: () => {
         this.toastr.success(`Le cv a été ajouté avec succès`);
