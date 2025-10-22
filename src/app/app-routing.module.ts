@@ -21,25 +21,7 @@ const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'rh', component: RhComponent },
   { path: 'products', component: ProductsComponent },
-  {
-    //cv/list
-    path: 'cv',
-    children: [
-      //list
-      { path: '', component: CvComponent },
-      { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
-      {
-        resolve: {
-          // Rahou 9bal ma trouti t3ada bel cvsResolver taw imedlek 9dhaya
-          cvs: cvsResolver,
-        },
-        path: 'list',
-        component: MasterDetailsComponent,
-        children: [{ path: ':id', component: DetailsCvComponent }],
-      },
-      { path: ':id', component: DetailsCvComponent },
-    ],
-  },
+
   {
     path: '',
     component: FrontComponent,
