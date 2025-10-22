@@ -4,10 +4,10 @@ import { TodoService } from '../service/todo.service';
 import { CanLeaveInterface } from 'src/app/guards/can-leave.interface';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css'],
-  //providers: [TodoService],
+    selector: 'app-todo',
+    templateUrl: './todo.component.html',
+    styleUrls: ['./todo.component.css'],
+    standalone: false
 })
 export class TodoComponent implements CanLeaveInterface {
   todos: Todo[] = [];

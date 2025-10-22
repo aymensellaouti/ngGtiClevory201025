@@ -6,9 +6,10 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-master-details',
-  templateUrl: './master-details.component.html',
-  styleUrls: ['./master-details.component.css'],
+    selector: 'app-master-details',
+    templateUrl: './master-details.component.html',
+    styleUrls: ['./master-details.component.css'],
+    standalone: false
 })
 export class MasterDetailsComponent {
   acr = inject(ActivatedRoute);

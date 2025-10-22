@@ -7,9 +7,10 @@ import { NgxUiLoaderService } from "ngx-ui-loader";
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: false
 })
 export class AppComponent {
   ngxService = inject(NgxUiLoaderService);
