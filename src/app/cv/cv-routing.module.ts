@@ -8,10 +8,6 @@ import { MasterDetailsComponent } from './master-details/master-details.componen
 import { cvsResolver } from './resolvers/cvs.resolver';
 
 export const CV_ROUTES: Routes = [
-  {
-    //cv/list
-    path: 'cv',
-    children: [
       //list
       { path: '', component: CvComponent },
       { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
@@ -25,8 +21,6 @@ export const CV_ROUTES: Routes = [
         children: [{ path: ':id', component: DetailsCvComponent }],
       },
       { path: ':id', component: DetailsCvComponent },
-    ],
-  },
 ];
 
 @NgModule({

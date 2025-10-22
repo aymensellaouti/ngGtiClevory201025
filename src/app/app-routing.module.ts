@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Route } from "@angular/router";
+import { RouterModule, Route, PreloadAllModules } from "@angular/router";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
@@ -16,10 +16,26 @@ import { MasterDetailsComponent } from "./cv/master-details/master-details.compo
 import { cvsResolver } from "./cv/resolvers/cvs.resolver";
 import { canLeaveGuard } from "./guards/can-leave.guard";
 import { ProductsComponent } from "./products/products.component";
+import { CustomPreloadingStrategy } from "./preloading strategies/custom-preloading-strategy";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'rh', component: RhComponent },
+  {
+    path: 'cv',
+    loadChildren: () => import('./cv/cv.module').then(
+      f =>f.CvModule
+    ),
+    data: {
+      preload: true
+    }
+  },
+  {
+    path: 'todo',
+    loadChildren: () => import('./todo/todo.module').then(
+      f =>f.TodoModule
+    )
+  },
   { path: 'products', component: ProductsComponent },
 
   {
@@ -38,10 +54,12 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,
-    {
-    //enableTracing: true
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      //enableTracing: true
+      preloadingStrategy: CustomPreloadingStrategy,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

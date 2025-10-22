@@ -48,8 +48,6 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
-import { TodoModule } from "./todo/todo.module";
-import { CvModule } from "./cv/cv.module";
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
@@ -84,8 +82,6 @@ import { CvModule } from "./cv/cv.module";
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    TodoModule,
-    CvModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
