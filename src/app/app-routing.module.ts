@@ -44,11 +44,6 @@ const routes: Route[] = [
     path: '',
     component: FrontComponent,
     children: [
-      {
-        path: 'todo',
-        component: TodoComponent,
-        canDeactivate: [canLeaveGuard],
-      },
       { path: 'word', component: MiniWordComponent },
     ],
   },

@@ -62,6 +62,7 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { TodoModule } from "./todo/todo.module";
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
@@ -73,6 +74,8 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     CardProfilComponent,
     PereComponent,
     FilsComponent,
+
+    // Cv Elements
     AddCvComponent,
     CvComponent,
     ListComponent,
@@ -83,13 +86,15 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     EmbaucheComponent,
     DefaultImagePipe,
     AutocompleteComponent,
+    MasterDetailsComponent,
+
+
     NgstyleComponent,
     MiniWordComponent,
     NgclassComponent,
     HighlightDirective,
     RainbowDirective,
     Btc2usdPipe,
-    TodoComponent,
     NavbarComponent,
     FrontComponent,
     AdminComponent,
@@ -102,14 +107,13 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     RhComponent,
     UserListComponent,
     ProductsComponent,
-    WeekTodoComponent,
-    MasterDetailsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    TodoModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
