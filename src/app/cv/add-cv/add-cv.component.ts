@@ -22,7 +22,7 @@ export class AddCvComponent {
   router = inject(Router);
   toastr = inject(ToastrService);
 
-  form = this.formBuilder.group(
+  form = this.formBuilder.nonNullable.group(
     {
       name: ["", Validators.required],
       firstname: ["", Validators.required],
@@ -49,7 +49,7 @@ export class AddCvComponent {
   );
 
   addCv(cv: Cv) {
-    this.cvService.addCv(cv).subscribe({
+    this.cvService.addCv(this.form.getRawValue()).subscribe({
       next: () => {
         this.toastr.success(`Le cv a été ajouté avec succès`);
         this.router.navigate([APP_ROUTES.cv]);

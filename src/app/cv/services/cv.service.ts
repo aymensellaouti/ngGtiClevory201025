@@ -55,7 +55,7 @@ export class CvService {
     return this.http.delete<any>(API.cv + id);
   }
 
-  addCv(cv: Cv): Observable<Cv> {
+  addCv(cv: Partial<Cv>): Observable<Cv> {
     return this.http.post<any>(API.cv, cv);
   }
 
