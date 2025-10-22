@@ -11,6 +11,7 @@ import { CvService } from "../services/cv.service";
 export class AutocompleteComponent {
   formBuilder = inject(FormBuilder);
   cvService = inject(CvService);
+  form = this.formBuilder.group({ search: [''] });
   get search(): AbstractControl {
     return this.form.get('search')!;
   }
@@ -24,5 +25,4 @@ export class AutocompleteComponent {
     switchMap((search) => this.cvService.selectByName(search))
   );
 
-  form = this.formBuilder.group({ search: [''] });
 }
