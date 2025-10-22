@@ -10,10 +10,12 @@
   age
   <input type="text" class="form-control" formControlName="age" />
   Cin:
-  <input type="text" class="form-control" [ngClass]="{
-    cinAge: form.errors && form.errors['cinAge']
-  }" formControlName="cin" />
-
+  <input type="text" class="form-control" formControlName="cin" />
+  <div
+    *ngIf="cin.hasError('uniqueCin')"
+    class="alert alert-danger">
+    {{cin.getError('uniqueCin')}}
+  </div>
   Job: <input type="text" class="form-control" formControlName="job" /> Path:
   <input type="text" class="form-control" formControlName="path" />
 
