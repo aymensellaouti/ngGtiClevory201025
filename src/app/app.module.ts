@@ -48,6 +48,7 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { TtcComponent } from "./signals/ttc/ttc.component";
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({ declarations: [
         AppComponent,
@@ -75,6 +76,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
         RhComponent,
         UserListComponent,
         ProductsComponent,
+        TtcComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         FormsModule,
