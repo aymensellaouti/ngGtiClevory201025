@@ -48,6 +48,7 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { StartCdComponent } from "./change Detection/start-cd/start-cd.component";
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({ declarations: [
         AppComponent,
@@ -75,8 +76,9 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
         RhComponent,
         UserListComponent,
         ProductsComponent,
+
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,StartCdComponent,
         FormsModule,
         BrowserAnimationsModule, // required animations module
         ToastrModule.forRoot(), // ToastrModule added
