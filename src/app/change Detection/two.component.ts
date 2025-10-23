@@ -27,7 +27,7 @@ import { CounterService } from './services/counter.service';
   `,
   styles: `
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class TwoComponent extends BaseNodeComponent {

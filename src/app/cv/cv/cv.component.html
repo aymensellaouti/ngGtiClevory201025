@@ -1,12 +1,24 @@
+@if (cvsRxResources.error()) {
+<div class="alert alert-danger">
+  something went wrong ....
+</div>
+} @else {
+@if (cvsRxResources.isLoading()) {
+<div class="alert alert-info">
+  Loading ....
+</div>
+} @else {
 <div class="row">
   <div class="col">
     <div class="alert alert-warning">
       {{ date | date : "full" | uppercase }}
     </div>
-    <app-list  [cvs]="cvs$ | async"></app-list>
+    <app-list [cvs]="cvsRxResources.value()"></app-list>
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv$ | async"></app-cv-card>
   </div>
 </div>
 <app-embauche></app-embauche>
+}
+}

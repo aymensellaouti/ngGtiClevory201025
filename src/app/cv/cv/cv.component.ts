@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
@@ -9,6 +9,7 @@ import { ListComponent } from "../list/list.component";
 import { CvCardComponent } from "../cv-card/cv-card.component";
 import { EmbaucheComponent } from "../embauche/embauche.component";
 import { AsyncPipe, UpperCasePipe, DatePipe } from "@angular/common";
+import { rxResource, toSignal } from "@angular/core/rxjs-interop";
 @Component({
     selector: 'app-cv',
     templateUrl: './cv.component.html',
@@ -20,20 +21,25 @@ export class CvComponent {
   private toastr = inject(ToastrService);
   private cvService = inject(CvService);
   private todoService = inject(TodoService);
-
-  //cvs: Cv[] = [];
   cvs$ = this.cvService.getCvs().pipe(
     retry({
       delay: 2000,
       count: 2,
     }),
-    catchError((e) => {
-      this.toastr.error(`
-          Attention!! Les données sont fictives, problème avec le serveur.
-          Veuillez contacter l'admin.`);
-      return of(this.cvService.getFakeCvs());
-    })
+    // catchError((e) => {
+    //   this.toastr.error(`
+    //       Attention!! Les données sont fictives, problème avec le serveur.
+    //       Veuillez contacter l'admin.`);
+    //   return of(this.cvService.getFakeCvs());
+    // })
   );
+  cvsSignal = toSignal(this.cvs$, {initialValue: []});
+
+  cvsRxResources = rxResource({
+    //params: nraj3ou tous les signaux dont on dépend
+    stream: () => this.cvs$,
+    defaultValue: []
+  });
   selectedCv$ = this.cvService.selectedCv$;
   /*   selectedCv: Cv | null = null; */
   date = new Date();

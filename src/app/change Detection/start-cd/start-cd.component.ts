@@ -14,6 +14,6 @@ import { BaseNodeComponent } from "../base-node.component";
   templateUrl: "./start-cd.component.html",
   styleUrl: "./start-cd.component.css",
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartCdComponent extends BaseNodeComponent {}

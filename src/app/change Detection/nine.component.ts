@@ -9,6 +9,6 @@ import { BaseNodeComponent } from './base-node.component';
     <span class="node-label" [style.background-color]="color">9</span>
   `,
   styles: ``,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NineComponent extends BaseNodeComponent {}

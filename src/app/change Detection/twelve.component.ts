@@ -13,7 +13,7 @@ import { BaseNodeComponent } from './base-node.component';
     <span class="node-label" [style.background-color]="color">12</span>
   `,
   styles: ``,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class TwelveComponent extends BaseNodeComponent {}

@@ -22,7 +22,7 @@ import { SixComponent } from './six.component';
 
 
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class ThreeComponent extends BaseNodeComponent {}

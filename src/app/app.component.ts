@@ -6,12 +6,13 @@ import { NgxUiLoaderService, NgxUiLoaderModule } from "ngx-ui-loader";
 import { Router, RouterOutlet } from "@angular/router";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { ShowIsEvenComponent } from "./signals/show-is-even/show-is-even.component";
+import { StartCdComponent } from "./change Detection/start-cd/start-cd.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    imports: [NavbarComponent, NgxUiLoaderModule, RouterOutlet, ShowIsEvenComponent]
+    imports: [NavbarComponent, NgxUiLoaderModule, RouterOutlet, ShowIsEvenComponent, StartCdComponent]
 })
 export class AppComponent {
   private loggerService = inject(LoggerService);

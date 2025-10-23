@@ -17,7 +17,7 @@ import { ElevenComponent } from './eleven.component';
   styles: `
 
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class SixComponent extends BaseNodeComponent {}

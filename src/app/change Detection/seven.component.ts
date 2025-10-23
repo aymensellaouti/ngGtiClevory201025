@@ -24,7 +24,7 @@ import { TwelveComponent } from './twelve.component';
   styles: `
 
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class SevenComponent extends BaseNodeComponent {

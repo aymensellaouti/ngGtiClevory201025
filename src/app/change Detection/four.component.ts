@@ -18,7 +18,7 @@ import { EightComponent } from './eight.component';
   styles: `
 
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class FourComponent extends BaseNodeComponent {}
