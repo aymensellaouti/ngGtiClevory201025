@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output } from '@angular/core';
 @Component({
     selector: 'app-fils',
     templateUrl: './fils.component.html',
@@ -9,8 +9,8 @@ export class FilsComponent {
    *
    * Create event
    */
-  @Output() sendMessageToDad = new EventEmitter<string>();
-
+  //@Output() sendMessageToDad = new EventEmitter<string>();
+  sendMessageToDad = output<string>();
   /**
    * Method that emits the data to dad
    */

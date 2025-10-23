@@ -2,19 +2,16 @@ import { Component, inject } from "@angular/core";
 import { LoggerService } from "./services/logger.service";
 import { SayHelloService } from "./services/sayHello.service";
 import { LOGGER_TOKEN } from "./injection tokens/logger.injection-token";
-import { AbstractLoggerSerice } from "./injection tokens/abstract-logger.service";
 import { NgxUiLoaderService, NgxUiLoaderModule } from "ngx-ui-loader";
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from "@angular/router";
+import { Router, RouterOutlet } from "@angular/router";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { StartCdComponent } from "./change Detection/start-cd/start-cd.component";
-import { CounterComponent } from "./signals/counter/counter.component";
-import { SomComponent } from "./signals/som/som.component";
+import { ShowIsEvenComponent } from "./signals/show-is-even/show-is-even.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    imports: [NavbarComponent, StartCdComponent, NgxUiLoaderModule, RouterOutlet, CounterComponent, SomComponent]
+    imports: [NavbarComponent, NgxUiLoaderModule, RouterOutlet, ShowIsEvenComponent]
 })
 export class AppComponent {
   private loggerService = inject(LoggerService);
