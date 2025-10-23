@@ -3,13 +3,14 @@ import { takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ListComponent } from '../list/list.component';
 
 @Component({
     selector: 'app-master-details',
     templateUrl: './master-details.component.html',
     styleUrls: ['./master-details.component.css'],
-    standalone: false
+    imports: [ListComponent, RouterOutlet]
 })
 export class MasterDetailsComponent {
   acr = inject(ActivatedRoute);

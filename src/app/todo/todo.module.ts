@@ -8,19 +8,16 @@ import { CommonModule } from "@angular/common";
 
 
 @NgModule({
-  // El7ajat eli tab3ini
-  declarations: [
-    TodoComponent,
-    WeekTodoComponent
-  ],
-  // El 7ajet eli nest7a9hom
-  imports:[
-    FormsModule,
-    TodoRoutingModule,
-    CommonModule
-  ],
-  providers: [],
-  // El 7at eli n7ab nsharihom m3a echabeb
-  exports:[]
+    // El 7ajet eli nest7a9hom
+    imports: [
+        FormsModule,
+        TodoRoutingModule,
+        CommonModule,
+        TodoComponent,
+        WeekTodoComponent
+    ],
+    providers: [],
+    // El 7at eli n7ab nsharihom m3a echabeb
+    exports: []
 })
 export class TodoModule {}

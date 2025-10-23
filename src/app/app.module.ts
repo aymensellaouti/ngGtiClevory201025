@@ -50,9 +50,19 @@ import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { StartCdComponent } from "./change Detection/start-cd/start-cd.component";
 //import {v4 as uuidV4} from 'uuid';
-@NgModule({ declarations: [
-        AppComponent,
-        FirstComponent,
+@NgModule({ declarations: [AppComponent], bootstrap: [AppComponent], imports: [BrowserModule, StartCdComponent,
+        FormsModule,
+        BrowserAnimationsModule, // required animations module
+        ToastrModule.forRoot(), // ToastrModule added
+        AppRoutingModule,
+        ReactiveFormsModule,
+        NgxUiLoaderModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }), FirstComponent,
         SecondComponent,
         ColorComponent,
         TwoComponent,
@@ -75,22 +85,7 @@ import { StartCdComponent } from "./change Detection/start-cd/start-cd.component
         TestHttpComponent,
         RhComponent,
         UserListComponent,
-        ProductsComponent,
-
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,StartCdComponent,
-        FormsModule,
-        BrowserAnimationsModule, // required animations module
-        ToastrModule.forRoot(), // ToastrModule added
-        AppRoutingModule,
-        ReactiveFormsModule,
-        NgxUiLoaderModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000',
-        })], providers: [
+        ProductsComponent], providers: [
         {
             provide: LOGGER_TOKEN,
             useClass: Logger2Service,
