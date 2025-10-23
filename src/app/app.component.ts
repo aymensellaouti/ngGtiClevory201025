@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { LoggerService } from "./services/logger.service";
 import { SayHelloService } from "./services/sayHello.service";
 import { LOGGER_TOKEN } from "./injection tokens/logger.injection-token";
@@ -15,14 +15,16 @@ import { StartCdComponent } from "./change Detection/start-cd/start-cd.component
     imports: [NavbarComponent, StartCdComponent, NgxUiLoaderModule, RouterOutlet]
 })
 export class AppComponent {
+  private loggerService = inject(LoggerService);
+  private sayHelloService = inject(SayHelloService);
+  private loggers = inject(LOGGER_TOKEN);
+
   ngxService = inject(NgxUiLoaderService);
   title = 'Starting Advanced Topics';
   router = inject(Router)
-  constructor(
-    private loggerService: LoggerService,
-    private sayHelloService: SayHelloService,
-    @Inject(LOGGER_TOKEN) private loggers: AbstractLoggerSerice[]
-  ) {
+  constructor() {
+    const loggers = this.loggers;
+
     this.loggerService.logger('cc :D');
     this.sayHelloService.hello();
     loggers.forEach((logger) => logger.logger('cc'));

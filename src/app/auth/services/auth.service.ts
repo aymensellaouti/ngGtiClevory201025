@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CredentialsDto } from '../dto/credentials.dto';
 import { LoginResponseDto } from '../dto/login-response.dto';
 import { HttpClient } from '@angular/common/http';
@@ -11,10 +11,12 @@ import { Cv } from 'src/app/cv/model/cv';
   providedIn: 'root',
 })
 export class AuthService {
+  private http = inject(HttpClient);
+
   user$ = new BehaviorSubject<ConnectedUser | null>(null); // flux eli traja3 ya connectedUser kan connecté sinon null
   isLoggedIn$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
   isLoggedOut$: Observable<boolean> = this.user$.pipe(map((user) => !user));
-  constructor(private http: HttpClient) {
+  constructor() {
     const user = localStorage.getItem(CONSTANTES.connectedUser);
     if(user) {
       this.user$.next(JSON.parse(user));

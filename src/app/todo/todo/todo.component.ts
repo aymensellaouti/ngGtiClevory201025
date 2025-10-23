@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../service/todo.service';
 import { CanLeaveInterface } from 'src/app/guards/can-leave.interface';
@@ -12,9 +12,11 @@ import { FormsModule } from '@angular/forms';
     imports: [FormsModule]
 })
 export class TodoComponent implements CanLeaveInterface {
+  private todoService = inject(TodoService);
+
   todos: Todo[] = [];
   todo = new Todo();
-  constructor(private todoService: TodoService) {
+  constructor() {
     this.todos = this.todoService.getTodos();
   }
   canLeave(): boolean {

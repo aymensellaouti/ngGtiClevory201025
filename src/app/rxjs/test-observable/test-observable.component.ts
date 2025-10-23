@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, inject } from "@angular/core";
 import { Observable, Subscription, filter, map, take } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { AsyncPipe } from "@angular/common";
@@ -10,10 +10,14 @@ import { AsyncPipe } from "@angular/common";
     imports: [AsyncPipe]
 })
 export class TestObservableComponent implements OnDestroy{
+  private toaster = inject(ToastrService);
+
   firstObservable$: Observable<number>;
   counter = 5;
   subscribtion = new Subscription();
-  constructor(private toaster: ToastrService) {
+  constructor() {
+    const toaster = this.toaster;
+
     this.firstObservable$ = new Observable((observer) => {
       let i = 5;
       const intervalIndex = setInterval(() => {

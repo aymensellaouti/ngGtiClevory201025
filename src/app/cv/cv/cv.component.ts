@@ -16,6 +16,11 @@ import { AsyncPipe, UpperCasePipe, DatePipe } from "@angular/common";
     imports: [ListComponent, CvCardComponent, EmbaucheComponent, AsyncPipe, UpperCasePipe, DatePipe]
 })
 export class CvComponent {
+  private logger = inject(LoggerService);
+  private toastr = inject(ToastrService);
+  private cvService = inject(CvService);
+  private todoService = inject(TodoService);
+
   //cvs: Cv[] = [];
   cvs$ = this.cvService.getCvs().pipe(
     retry({
@@ -33,12 +38,7 @@ export class CvComponent {
   /*   selectedCv: Cv | null = null; */
   date = new Date();
 
-  constructor(
-    private logger: LoggerService,
-    private toastr: ToastrService,
-    private cvService: CvService,
-    private todoService: TodoService
-  ) {
+  constructor() {
     // this.cvService.getCvs().subscribe({
     //   next: (cvs) => {
     //     this.cvs = cvs;
