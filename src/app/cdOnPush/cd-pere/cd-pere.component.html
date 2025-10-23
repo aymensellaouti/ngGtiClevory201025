@@ -1,0 +1,5 @@
+<p>cd-pere works!</p>
+<input type="text" [(ngModel)]="name">
+<input #myInput type="text" (input)="changeUser(myInput.value)">
+
+<app-cd-fils [user]="user" [name]="name" />

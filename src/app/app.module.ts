@@ -48,6 +48,10 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 
 import { UUID_TOKEN } from "./injection tokens/uuid.injection-token";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { CdPereComponent } from './cdOnPush/cd-pere/cd-pere.component';
+import { CdFilsComponent } from './cdOnPush/cd-fils/cd-fils.component';
+import { ListElementsComponent } from './optimizationPattern/list-elements/list-elements.component';
+import { FiboPipe } from './pipes/fibo.pipe';
 //import {v4 as uuidV4} from 'uuid';
 @NgModule({
   declarations: [
@@ -76,6 +80,10 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
     RhComponent,
     UserListComponent,
     ProductsComponent,
+    CdPereComponent,
+    CdFilsComponent,
+    ListElementsComponent,
+    FiboPipe,
   ],
   imports: [
     BrowserModule,
