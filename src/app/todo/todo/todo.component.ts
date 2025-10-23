@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../service/todo.service';
 import { CanLeaveInterface } from 'src/app/guards/can-leave.interface';
-import { NgFor } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css'],
-    imports: [NgFor, FormsModule]
+    imports: [FormsModule]
 })
 export class TodoComponent implements CanLeaveInterface {
   todos: Todo[] = [];

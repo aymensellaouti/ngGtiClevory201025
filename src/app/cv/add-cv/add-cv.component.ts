@@ -8,13 +8,13 @@ import { Cv } from "../model/cv";
 import { CONSTANTES } from "src/config/const.config";
 import { uniqueCinValidator } from "src/app/validators/unique-cin.validator";
 import { cinAgeValidator } from "src/app/validators/cin-age.validator";
-import { NgIf } from "@angular/common";
+
 
 @Component({
     selector: 'app-add-cv',
     templateUrl: './add-cv.component.html',
     styleUrls: ['./add-cv.component.css'],
-    imports: [FormsModule, ReactiveFormsModule, NgIf]
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class AddCvComponent implements OnDestroy {
   formBuilder = inject(FormBuilder);

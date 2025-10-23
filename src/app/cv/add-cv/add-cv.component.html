@@ -2,27 +2,31 @@
 <form [formGroup]="form">
   Name:
   <input type="text" class="form-control" formControlName="name" />
-  <div *ngIf="form.get('name')?.errors && form.get('name')?.touched" class="alert alert-danger">
-    Ce champ est obligatoire
-  </div>
+  @if (form.get('name')?.errors && form.get('name')?.touched) {
+    <div class="alert alert-danger">
+      Ce champ est obligatoire
+    </div>
+  }
   Firstname:
   <input type="text" class="form-control" formControlName="firstname" />
   age
   <input type="text" class="form-control" formControlName="age" />
   Cin:
   <input type="text" class="form-control" formControlName="cin" />
-  <div
-    *ngIf="cin.hasError('uniqueCin')"
-    class="alert alert-danger">
-    {{cin.getError('uniqueCin')}}
-  </div>
+  @if (cin.hasError('uniqueCin')) {
+    <div
+      class="alert alert-danger">
+      {{cin.getError('uniqueCin')}}
+    </div>
+  }
   Job: <input type="text" class="form-control" formControlName="job" /> Path:
   <input type="text" class="form-control" formControlName="path" />
-  <div
-    *ngIf="form.hasError('cinAge')"
-    class="alert alert-danger">
-    {{form.getError('cinAge')}}
-  </div>
+  @if (form.hasError('cinAge')) {
+    <div
+      class="alert alert-danger">
+      {{form.getError('cinAge')}}
+    </div>
+  }
   <button [disabled]="form.invalid" class="btn btn-primary" (click)="addCv()">
     add cv
   </button>
