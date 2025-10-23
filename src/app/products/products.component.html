@@ -1,5 +1,5 @@
 <button (click)="more()" class="btn btn-primary"> More Products</button>
-@if ((products$ | async); as productsList,) {
+@if ((products$ | async); as productsList) {
   <div class="alert alert-warning">
     Product Number: {{productsList?.length}}
   </div>

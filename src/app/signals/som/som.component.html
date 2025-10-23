@@ -1,0 +1,12 @@
+<p (click)="addName()">first-signal works!</p>
+<input type="number" [(ngModel)]="x" class="form-control">
+<input type="number" [(ngModel)]="y" class="form-control">
+{{ x() }} + {{ y() }} = {{ z() }}
+<hr>
+
+@for (name of names(); track name) {
+  {{name}}
+}
+<p>
+  {{namesLength()}}
+</p>

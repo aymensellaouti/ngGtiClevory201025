@@ -7,12 +7,14 @@ import { NgxUiLoaderService, NgxUiLoaderModule } from "ngx-ui-loader";
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from "@angular/router";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { StartCdComponent } from "./change Detection/start-cd/start-cd.component";
+import { CounterComponent } from "./signals/counter/counter.component";
+import { SomComponent } from "./signals/som/som.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    imports: [NavbarComponent, StartCdComponent, NgxUiLoaderModule, RouterOutlet]
+    imports: [NavbarComponent, StartCdComponent, NgxUiLoaderModule, RouterOutlet, CounterComponent, SomComponent]
 })
 export class AppComponent {
   private loggerService = inject(LoggerService);

@@ -9,7 +9,7 @@ import { cvsResolver } from './resolvers/cvs.resolver';
 
 export const CV_ROUTES: Routes = [
       //list
-      { path: '', loadComponent: () => import('./add-cv/add-cv.component').then(m => m.CvComponent) },
+      { path: '', loadComponent: () => import('./cv/cv.component').then(m => m.CvComponent) },
       { path: 'add', loadComponent: () => import('./add-cv/add-cv.component').then(m => m.AddCvComponent), canActivate: [authGuard] },
       {
         resolve: {
